@@ -1,4 +1,4 @@
----
+<!-- ---
 title: 1. Single file
 layout: page
 ---
@@ -21,4 +21,38 @@ layout: page
     reader.readAsDataURL(photo.files[0]);
   }
   photo.addEventListener('input', read);
+</script>
+ -->
+
+---
+title: 1. Single file
+layout: page
+---
+
+<input id="photo" type="file">
+<div id="results"></div>
+<script type="module">
+import { client } from "/@gradio/client";
+
+async function run() {
+  // Create an input element for selecting the image file
+  const fileInput = document.createElement("input");
+  fileInput.type = "file";
+
+  // Wait for the user to select a file
+  await new Promise((resolve) => {
+    fileInput.addEventListener("change", resolve);
+  });
+
+  // Get the selected file from the input element
+  const selectedFile = fileInput.files[0];
+
+  const app = await client("https://nirmal590-prediction-model.hf.space/");
+  const result = await app.predict("/predict", [selectedFile]);
+
+  console.log(result?.data);
+}
+
+run();
+
 </script>
