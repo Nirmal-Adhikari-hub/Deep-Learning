@@ -164,6 +164,13 @@
       font-weight: 700;
       text-decoration: none;
     }
+    
+    /* Additional styles for the classifier information */
+    .classifier-info {
+      margin-bottom: 30px;
+      font-size: 16px;
+      color: #bbb;
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.8.0/dist/tf.min.js"></script>
 </head>
@@ -173,6 +180,10 @@
     <div class="profile-picture">
       <img id="profilePicture" src="" alt="Profile Picture">
       <a id="profileLink" href="" target="_blank"></a>
+    </div>
+    
+    <div class="classifier-info">
+      This classifier predicts whether the input image is a dog or a cat.
     </div>
 
     <h1>Image Prediction</h1>
